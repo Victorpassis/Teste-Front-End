@@ -1,3 +1,30 @@
-<p>
-  repositorios works!
-</p>
+<div class="container">
+
+  <div class="row mt-4">
+    <div class="col">
+      <h2>
+        Module repositorios
+      </h2>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-12">
+      <div class="table-responsive">
+        <table class="table table-sm table-hover table-bordered table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let repositorio of repositorios; let i=index">
+              <td>{{repositorio.name}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>

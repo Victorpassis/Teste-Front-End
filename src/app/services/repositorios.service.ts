@@ -10,9 +10,9 @@ export class RepositoriosService {
   constructor(private http: HttpClient) { }
 
   getRepositorios() {
-    return this.http.get(this.githubUrl + "/users/Victorpassis/repos");
+    return this.http.get(this.githubUrl + "/user/repos");
   }
   getUser() {
-    return this.http.get(this.githubUrl + "/users/Victorpassis");
+    return this.http.get(this.githubUrl + "/user");
   }
 }

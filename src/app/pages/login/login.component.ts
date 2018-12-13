@@ -10,6 +10,7 @@ import { environment } from '../../../environments/environment';
   styleUrls: ['./login.component.sass']
 })
 export class LoginComponent implements OnInit {
+  load: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -20,17 +21,17 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.actRoute.queryParams.subscribe(params => {
       if(params['code'] && !this.authService.isAuthenticated()) {
+        this.load = true;
         this.authService.getToken(params['code'])
-        /*.subscribe((response: any) => {
-            const { access_token, token_type } = response
-            this.authService.setAuthentication( access_token, token_type )
-            //this.router.navigate([''])
-          })*/
+        .subscribe((response: any) => {
+          this.authService.setAuthentication( response.token.access_token, response.token.token_type )
+          this.router.navigate([''])
+        })
       }
     });
 
     if(this.authService.isAuthenticated) {
-      //this.router.navigate([''])
+      this.router.navigate([''])
     }
   }
 

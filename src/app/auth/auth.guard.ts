@@ -16,11 +16,11 @@ export class AuthGuard {
     private router: Router
   ) {}
 
-  /*canActivate() {
+  canActivate() {
     if (!this.auth.isAuthenticated()) {
       this.router.navigate(['login']);
       return false;
     }
     return true;
-  }*/
+  }
 }

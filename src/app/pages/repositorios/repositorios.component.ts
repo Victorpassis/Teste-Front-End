@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 //Service
 import { RepositoriosService } from '../../services/repositorios.service';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-repositorios',
@@ -12,7 +13,10 @@ export class RepositoriosComponent implements OnInit {
   repositorios: any;
   user: any;
 
-  constructor(private repositoriosService: RepositoriosService) { }
+  constructor(
+    private authService: AuthService,
+    private repositoriosService: RepositoriosService
+  ) { }
 
   ngOnInit() {
     this.repositoriosService.getRepositorios()
@@ -27,5 +31,9 @@ export class RepositoriosComponent implements OnInit {
           this.user = data;
         }
     );
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

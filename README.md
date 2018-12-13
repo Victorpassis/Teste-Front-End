@@ -14,5 +14,8 @@ Run ng build to build the project. The build artifacts will be stored in the dis
 ## Comments
 Check the versions of NodeJS and npm, this project is using Node on version 8.11.1 and npm 5.6.0, if there is any version conflict, use these verifications.
 This project need a proxy config, this proxy is to avoid CORS on GitHub API, file that is on root folder.
+To access the token, it is necessary to execute an api nodejs on the link:
+[https://list-repositories.herokuapp.com](https://list-repositories.herokuapp.com)
+In the project terminal run: "npm install" then "node app" the api will start run
 
-Demo: [https://list-repositories.herokuapp.com](https://list-repositories.herokuapp.com)
+Demo: [https://github.com/Victorpassis/list-repositories-api](https://github.com/Victorpassis/list-repositories-api)

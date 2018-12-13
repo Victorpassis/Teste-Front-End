@@ -11,7 +11,7 @@ Run: npm start --open - The app will automatically open the browser on the host:
 ## Build
 Run ng build to build the project. The build artifacts will be stored in the dist/ directory. Use the --prod flag for a production build.
 
-##Comments
+## Comments
 Check the versions of NodeJS and npm, this project is using Node on version 8.11.1 and npm 5.6.0, if there is any version conflict, use these verifications.
 This project need a proxy config, this proxy is to avoid CORS on GitHub API, file that is on root folder.
 

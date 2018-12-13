@@ -14,12 +14,14 @@ import { RepositoriosComponent } from './pages/repositorios/repositorios.compone
 
 //Services
 import { RepositoriosService } from './services/repositorios.service';
+import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RepositoriosComponent
+    RepositoriosComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,

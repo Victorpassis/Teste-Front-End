@@ -7,6 +7,7 @@ import { AuthGuard } from './auth/auth.guard';
 //pages
 import { LoginComponent } from './pages/login/login.component';
 import { RepositoriosComponent } from './pages/repositorios/repositorios.component';
+import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,13 @@ const routes: Routes = [
     path: '',
     component: RepositoriosComponent,
     canActivate: [AuthGuard]
+  },{
+    path: 'repositorios',
+    component: RepositoriosComponent,
+    canActivate: [AuthGuard]
+  },{ 
+    path: '**',
+    component: PagenotfoundComponent
   }
 ];
 

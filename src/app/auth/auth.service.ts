@@ -11,7 +11,7 @@ export class AuthService {
   ) { }
 
   getToken(session_code: any) {
-    return this.http.get("http://localhost:8080/api/proxy/" + session_code);
+    return this.http.get("https://list-repositories-api.herokuapp.com/api/proxy/" + session_code);
   }
 
   setAuthentication(token: string, type: string) {

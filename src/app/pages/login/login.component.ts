@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { DOCUMENT } from '@angular/common';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { AuthService } from '../../auth/auth.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -12,20 +12,29 @@ import { AuthService } from '../../auth/auth.service';
 export class LoginComponent implements OnInit {
 
   constructor(
-    //@Inject(DOCUMENT) private document: any,
     private authService: AuthService,
-    private route: ActivatedRoute
+    private router: Router,
+    private actRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      if(params['code']){
-        this.authService.getToken(params['code']);
+    this.actRoute.queryParams.subscribe(params => {
+      if(params['code'] && !this.authService.isAuthenticated()) {
+        this.authService.getToken(params['code'])
+        /*.subscribe((response: any) => {
+            const { access_token, token_type } = response
+            this.authService.setAuthentication( access_token, token_type )
+            //this.router.navigate([''])
+          })*/
       }
     });
+
+    if(this.authService.isAuthenticated) {
+      //this.router.navigate([''])
+    }
   }
 
   login() {
-    window.location.href = "https://github.com/login/oauth/authorize?scope=user:email&client_id=" + this.authService.CLIENT_ID;
+    window.location.href = "https://github.com/login/oauth/authorize?scope=user:email&client_id=" + environment.CLIENT_ID;
   }
 }

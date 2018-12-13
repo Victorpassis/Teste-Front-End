@@ -10,7 +10,7 @@ import { RepositoriosComponent } from './pages/repositorios/repositorios.compone
 
 const routes: Routes = [
   {
-    path: 'entrar',
+    path: 'login',
     component: LoginComponent
   },{
     path: '',

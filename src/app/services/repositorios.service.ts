@@ -5,11 +5,14 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class RepositoriosService {
-  githubUrl = 'https://api.github.com/users/Victorpassis/repos';
+  githubUrl = 'https://api.github.com';
 
   constructor(private http: HttpClient) { }
 
   getRepositorios() {
-    return this.http.get(this.githubUrl);
+    return this.http.get(this.githubUrl + "/users/Victorpassis/repos");
+  }
+  getUser() {
+    return this.http.get(this.githubUrl + "/users/Victorpassis");
   }
 }

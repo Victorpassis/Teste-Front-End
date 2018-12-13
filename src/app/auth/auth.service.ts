@@ -1,32 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-import { NotifyService } from './notify.service';
-
-import { Observable, of } from 'rxjs';
-import { switchMap, startWith, tap, filter, finalize } from 'rxjs/operators';
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json'
-  })
-};
+import { HttpClient, HttpParams  } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthService {
-  CLIENT_ID = 'e27022ca24dac6b11943';
-  private CLIENT_SECRET = 'a4ca3a55d48b5c53515f363b73dabf48d87767fa'
-
   constructor(
     private http: HttpClient,
-    private router: Router,
-    private notify: NotifyService
+    private router: Router
   ) { }
 
   getToken(session_code: any) {
-    this.http.post("https://github.com/login/oauth/access_token?client_id=" + this.CLIENT_ID + "&client_secret=" + this.CLIENT_SECRET + "&code=" + session_code, {}, httpOptions)
+    /*this.http.post("https://github.com/login/oauth/access_token?client_id=" + environment.CLIENT_ID + "&client_secret=" + environment.CLIENT_SECRET + "&code=" + session_code, {})
       .subscribe(
       data => {
         console.log("POST Request is successful ", data);
@@ -34,16 +21,21 @@ export class AuthService {
       error => {
         console.log("Error", error);
       }
-    );
-  }
-  getClient() {
-    
+    );*/
   }
 
+  setAuthentication(token: string, type: string) {
+    sessionStorage.setItem('token', token);
+    sessionStorage.setItem('type', type);
+  }
 
-  // If error, console log and notify user
-  private handleError(error: Error) {
-    console.error(error);
-    this.notify.update(error.message, 'error');
+  isAuthenticated(): boolean {
+    if(sessionStorage.getItem('token') && sessionStorage.getItem('token') !== 'undefined') return true
+
+    return false
+  }
+
+  logout() {
+    sessionStorage.clear();
   }
 }

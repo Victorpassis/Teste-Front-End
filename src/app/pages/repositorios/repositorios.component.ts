@@ -10,6 +10,7 @@ import { RepositoriosService } from '../../services/repositorios.service';
 })
 export class RepositoriosComponent implements OnInit {
   repositorios: any;
+  user: any;
 
   constructor(private repositoriosService: RepositoriosService) { }
 
@@ -18,6 +19,12 @@ export class RepositoriosComponent implements OnInit {
       .subscribe(
         data => {
           this.repositorios = data;
+        }
+    );
+    this.repositoriosService.getUser()
+      .subscribe(
+        data => {
+          this.user = data;
         }
     );
   }

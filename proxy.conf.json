@@ -1,11 +1,13 @@
 {
-  "/api": {
-    "target": "https://github.com",
+  "/proxy": {
+    "target": "https://github.com/login/oauth/",
     "secure": false,
     "pathRewrite": {
-      "^/api": "https://github.com"
+      "^/proxy": ""
     },
     "changeOrigin": true,
-    "logLevel": "debug"
+    "headers": {
+        "accept": "application/json"
+    }
   }
 }

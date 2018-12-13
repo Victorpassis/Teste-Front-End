@@ -19,7 +19,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      this.authService.getClient(params['code']);
+      if(params['code']){
+        this.authService.getToken(params['code']);
+      }
     });
   }
 

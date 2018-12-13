@@ -25,7 +25,7 @@ export class AuthService {
     private notify: NotifyService
   ) { }
 
-  getClient(session_code: any) {
+  getToken(session_code: any) {
     this.http.post("https://github.com/login/oauth/access_token?client_id=" + this.CLIENT_ID + "&client_secret=" + this.CLIENT_SECRET + "&code=" + session_code, {}, httpOptions)
       .subscribe(
       data => {
@@ -35,11 +35,11 @@ export class AuthService {
         console.log("Error", error);
       }
     );
-    /*this.http.post("https://github.com/login/oauth/access_token?client_id=" + this.CLIENT_ID + "&client_secret=" + this.CLIENT_SECRET + "&code=" + session_code, {}, httpOptions)
-    .subscribe(result => {
-      console.log(result);
-    });*/
   }
+  getClient() {
+    
+  }
+
 
   // If error, console log and notify user
   private handleError(error: Error) {

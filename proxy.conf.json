@@ -1,0 +1,11 @@
+{
+  "/api": {
+    "target": "https://github.com",
+    "secure": false,
+    "pathRewrite": {
+      "^/api": "https://github.com"
+    },
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}
